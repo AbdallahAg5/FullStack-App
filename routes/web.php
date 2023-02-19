@@ -16,6 +16,10 @@ use App\Http\Controllers\MyfirstController;
 |
 */
 
+
+
+
+
 Route::get('/', function () {
   $allParams=[
        "name" => "Abdallah",

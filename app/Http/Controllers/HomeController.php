@@ -7,6 +7,9 @@ use App\Models\Product;
 
 class HomeController extends Controller
 {
+
+ 
+
     public function home(Request $request){
          
          return view('article',[ 'name' => $request->name]);

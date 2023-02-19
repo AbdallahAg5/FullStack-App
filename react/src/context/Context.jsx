@@ -1,13 +1,19 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 
 const UserContext=createContext({
-User:null,
-token:null
-})
-const [user,setUser]=useState({})
-const [token,setToken]=useState(null)
+user:null,
+token:null,
+setUser:()=>{},
+TokenFunc:()=>{}
 
+})
+
+
+
+export const ContextProvider=({children})=>{
+const [user,setUser]=useState({})
+const [token,setToken]=useState(localStorage.getItem('token'))
 
 const TokenFunc=(token)=>{
 setToken(token)
@@ -18,11 +24,12 @@ else{
 localStorage.removeItem('token')
 }
 }
-
-export const ContextProvider=({children})=>{
 return (
-<UserContext.Provider values={{ user, token, setUser, TokenFunc }}>
+<UserContext.Provider value={{ user, token, setUser, TokenFunc }}>
     {children}
 </UserContext.Provider>
 )
 }
+
+
+export const useStateContext=()=> useContext(UserContext)

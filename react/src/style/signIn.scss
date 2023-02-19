@@ -1,0 +1,116 @@
+@import "./includes.scss";
+
+.SignIn_Container {
+    display: flex;
+    justify-content: center;
+    height: calc(100vh - 50px);
+    flex-direction: row;
+    background-image: url(../assets/Img1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+  }
+  
+  .SignIn_Content {
+
+    justify-self: center;
+    border-radius: 20px;
+    text-align: center;
+    border: 2px solid $color1;
+    padding: 15px;
+    width: 300px;
+    height: 400px;
+    background-color: rgba(26, 55, 77, 0.5);
+    backdrop-filter: blur(5px);
+    box-shadow: 3px 3px 5px rgba(31, 31, 32, 0.486),
+      -3px -3px 5px rgba(31, 31, 32, 0.486);
+    margin: 50px 10px 0px 10px;
+  }
+  
+  .SignIn {
+    @include font-family;
+    color: $color4;
+    text-decoration: underline;
+  }
+  
+  .TextInput {
+    margin-top: 15px;
+    height: 20px;
+    width: 250px;
+    padding-left: 15px;
+    outline: 1px solid $color1;
+    @include font-family;
+  }
+  
+  .TextInput:focus {
+    background-color: $color4;
+  }
+  
+  .TextInput::placeholder {
+    @include font-family;
+  }
+
+  .err{
+    margin-block-start: 1px;
+    margin-block-end: 0px;
+    font-size: 10px;
+    text-align: start;
+    margin-left: 20px;
+    color: rgb(255, 0, 0);
+    @include font-family;
+
+  }
+
+  .globalerr{
+    margin-block-start: 1px;
+    margin-block-end: 0px;
+    font-size: 10px;
+    position: absolute;
+    color: rgb(255, 0, 0);
+    @include font-family;
+    top: 95px;
+    left: 20%;
+    transform: translate(-3%)
+  }
+  
+  .Submit {
+    @include font-family;
+    margin-top: 30px;
+    width: 150px;
+    height: 25px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-style: italic;
+  }
+  
+  .Submit:hover {
+    background-color: $color1;
+    color: $color4;
+    text-decoration: line-through red;
+    cursor: pointer;
+  }
+  
+  .copyrights {
+    @include font-family;
+    color: $color1;
+    margin-top: 80px;
+    font-style: italic;
+    opacity: 0.7;
+    position: absolute;
+    bottom:  15px;
+    margin: auto;
+    left: 20%;
+    transform: translate(-5%);
+  }
+
+
+  .top-space{
+    height: 20px;
+  }
+  .botton-space{
+    height: 40px;
+    width: 80%;
+    margin: auto;
+    @include font-family;
+    font-size: small;
+  }

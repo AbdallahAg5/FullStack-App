@@ -1,0 +1,41 @@
+@import "./includes.scss";
+
+
+
+.public_layout{
+    height: 50px;
+    display: flex;
+    padding: 0px 15px ;
+    justify-content: space-between;
+    align-items: center;
+    @include font-family;
+    background-image: linear-gradient(#013451,#305a70) ;
+    color: aliceblue;
+                
+   
+}
+
+.logo{
+    letter-spacing: 0.5px;
+}
+
+.ul-public{
+    display: flex;   
+}
+
+.ul-public > a{
+     list-style-type: none;
+     margin-left: 15px;
+     margin-right: 15px;
+     text-decoration: none;
+     color: white;
+
+}
+
+
+@media (max-width:450px) {
+    .ul-public{
+        display: none;   
+    }
+    
+}
