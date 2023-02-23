@@ -32,6 +32,16 @@ class UserController extends Controller
     {
 
         $data = $request->validated();
+         
+        // image logic + php artisan storage:link
+         if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+        $path = $image->storeAs('public/images', $filename);
+        $data['image'] = $filename;
+    }
+
+
         $data['password'] = bcrypt($data['password']);
         $user = User::create($data);
 

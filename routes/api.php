@@ -20,14 +20,14 @@ use App\Http\Controllers\Api\UserController;
 
 // php artisan make:controller Api/UserController --model=User --requests --resource --api
 
-Route::middleware('auth:sanctum')->group(function (){
+
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
     // this logout route should be here inside the middleware bcz the user need to be auth to do this action
     Route::post('/logout', [AuthController::class,'logout']); 
     Route::apiResource('/users',UserController::class);
-});
+
 
 
 

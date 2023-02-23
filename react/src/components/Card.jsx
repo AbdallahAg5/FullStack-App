@@ -22,7 +22,7 @@ function Card({data,getUsers}) {
 
 return (
 <div className="max-w-sm rounded overflow-hidden shadow-lg m-auto">
-    {/* <img className="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains" /> */}
+    <img className="w-full"src={'http://127.0.0.1:8000/storage/images/'+ data.image} alt="Sunset in the mountains" />
     <div className="px-6 py-4">
         <div className='flex justify-between'>
         <div className="font-bold text-xl mb-2 ">{data.name.charAt(0).toUpperCase() + data.name.slice(1)}</div>

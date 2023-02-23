@@ -11,8 +11,10 @@ function UserForm() {
        email:'',
        password:'',
        password_confirmation:'',
-       img:''
+       image:''
     });
+
+    const {name,password,password_confirmation,image,email}=user
     const [loading, setLoading] = useState(false);
 
     if (id) {
@@ -30,7 +32,7 @@ function UserForm() {
     }
 
 
-    const BtnHandler=()=>{
+    const BtnHandler=(e)=>{
       if (user.id) {
         axiosClient.put(`/users/${user.id}`, user)
           .then(() => {
@@ -40,10 +42,17 @@ function UserForm() {
             const response = err.response;
             if (response && response.status === 422) {
                console.log(err)
-            }
+            }      
+            
           })
       } else {
-        axiosClient.post('/users', user)
+        const formData = new FormData();
+        formData.append('email', email);
+        formData.append('image', image);
+        formData.append('name', name);
+        formData.append('password', password);
+        formData.append('password_confirmation', password_confirmation);
+        axiosClient.post('/users', formData)
           .then(() => {
             navigate('/users')
           })
@@ -55,6 +64,8 @@ function UserForm() {
             }
           })
       }
+
+      e.preventDefault()
     
     }
 
@@ -75,7 +86,7 @@ function UserForm() {
   return (
       <>
         {!loading && <div className='container'>
-       <div class="max-w-md mx-auto border-spacing-8 border-2 px-8 py-5  mt-8">
+       <form onSubmit={BtnHandler} encType='multipart/form-data' class="max-w-md mx-auto border-spacing-8 border-2 px-8 py-5  mt-8">
           <div class="grid grid-cols-1 gap-6">
             <label class="block">
               <span class="text-gray-700">Name</span> 
@@ -95,11 +106,11 @@ function UserForm() {
             </label>
             <label class="block">
               <span class="text-gray-700">Image</span>
-              <input type={'file'} name='img' class=" form-input block w-full mt-1"   onChange={InputHandler} />
+              <input type={'file'} name='image' class=" form-input block w-full mt-1"   onChange={InputHandler} />
             </label>
-            <input type={'submit'} onClick={BtnHandler} className='class="block py-2 text-purple-100 bg-cyan-900   rounded shadow-lg shadow-purple-300"' value={id ? 'Confirm Update' : 'Add User'} />
+            <input type={'submit'}  className='class="block py-2 text-purple-100 bg-cyan-900   rounded shadow-lg shadow-purple-300"' value={id ? 'Confirm Update' : 'Add User'} />
           </div>
-        </div>
+        </form>
      </div>
 }
       </>
